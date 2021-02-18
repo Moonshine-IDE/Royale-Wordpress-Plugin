@@ -51,7 +51,7 @@ class Royal_Wordpress_Plugin_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
+		add_action( 'admin_menu', array( $this, 'add_shortcodes_submenu' ) );
 	}
 
 	/**
@@ -100,4 +100,47 @@ class Royal_Wordpress_Plugin_Admin {
 
 	}
 
+	/**
+	 * Get folders containing shortcodes' code.
+	 *
+	 * @since    1.0.0
+	 */
+	private function get_shortcode_names() {
+		$shortcodes_folder_path = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
+		$shortcodes_folder_content =glob("{$shortcodes_folder_path}/*", GLOB_ONLYDIR);
+		$shortcodes = [];
+		foreach ($shortcodes_folder_content as $shortcode_dir_path) {
+			if ( file_exists("{$shortcode_dir_path}/index.html") ) {
+				$shortcodes[] = basename($shortcode_dir_path);
+			}
+		}
+		return $shortcodes;
+	}
+
+
+	/**
+	 * Display html with list of shortcodes.
+	 *
+	 * @since    1.0.0
+	 */
+	function shortcodes_submenu_html() {
+		$shortcode_names = $this->get_shortcode_names();
+		require __DIR__ . '/partials/shortcodes-list.php';
+	}
+
+	/**
+	 * Add submenu to the WordPress'es wp-admin tools menu.
+	 *
+	 * @since    1.0.0
+	 */
+	function add_shortcodes_submenu() {
+		add_submenu_page(
+			'tools.php',
+			'RWP list of shortcodes',
+			'RWP list of shortcodes',
+			'edit_posts',
+			'rwp_shortcode_list',
+			array($this, 'shortcodes_submenu_html')
+		);
+	}
 }

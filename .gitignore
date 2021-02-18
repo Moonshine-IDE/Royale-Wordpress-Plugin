@@ -1,0 +1,3 @@
+shortcodes-files/*
+
+!shortcodes-files/index.php

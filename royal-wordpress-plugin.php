@@ -41,6 +41,10 @@ if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_URL' ) ) {
     define( 'ROYAL_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
+if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_PATH' ) ) {
+    define( 'ROYAL_WORDPRESS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-royal-wordpress-plugin-activator.php
