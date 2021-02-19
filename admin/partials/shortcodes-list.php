@@ -10,6 +10,10 @@
  * @package    Royal_Wordpress_Plugin
  * @subpackage Royal_Wordpress_Plugin/admin/partials
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 ?>
 
 <div class="wrap" id="rwp-shortcodes-list-table">

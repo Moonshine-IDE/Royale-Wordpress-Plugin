@@ -37,10 +37,16 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'ROYAL_WORDPRESS_PLUGIN_VERSION', '1.0.0' );
 
+/**
+ * Plugin directory url
+ */
 if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_URL' ) ) {
     define( 'ROYAL_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
+/**
+ * Plugin directory path
+ */
 if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_PATH' ) ) {
     define( 'ROYAL_WORDPRESS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 }

@@ -20,6 +20,7 @@
  * @subpackage Royal_Wordpress_Plugin/admin
  * @author     Clearmedia <contact@clearmedia.pl>
  */
+
 class Royal_Wordpress_Plugin_Admin {
 
 	/**
@@ -51,7 +52,10 @@ class Royal_Wordpress_Plugin_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-		add_action( 'admin_menu', array( $this, 'add_shortcodes_submenu' ) );
+		add_action( 'admin_menu', array( $this, 'add_plugin_menu' ) );
+		add_action( 'admin_menu', array( $this, 'add_shortcodes_list_submenu' ) );
+		require_once __DIR__ . '/class-upload-zip-form.php';
+		new Upload_ZIP_Form();
 	}
 
 	/**
@@ -123,7 +127,7 @@ class Royal_Wordpress_Plugin_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	function shortcodes_submenu_html() {
+	function shortcodes_list_submenu_html() {
 		$shortcode_names = $this->get_shortcode_names();
 		require __DIR__ . '/partials/shortcodes-list.php';
 	}
@@ -133,14 +137,28 @@ class Royal_Wordpress_Plugin_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	function add_shortcodes_submenu() {
+	function add_shortcodes_list_submenu() {
 		add_submenu_page(
-			'tools.php',
+			'royal_wordpress_plugin_menu',
 			'RWP list of shortcodes',
 			'RWP list of shortcodes',
 			'edit_posts',
-			'rwp_shortcode_list',
-			array($this, 'shortcodes_submenu_html')
+			'royal_wordpress_plugin_menu',
+			array($this, 'shortcodes_list_submenu_html')
+		);
+	}
+
+	/**
+	 * Add submenu to the WordPress'es wp-admin tools menu.
+	 *
+	 * @since    1.0.0
+	 */
+	function add_plugin_menu() {
+		add_menu_page(
+			'Royal Wordpress Plugin',
+			'Royal Wordpress Plugin',
+			'edit_posts',
+			'royal_wordpress_plugin_menu',
 		);
 	}
 }
