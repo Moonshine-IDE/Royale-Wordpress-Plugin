@@ -2,3 +2,13 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.rwp-iframe {
+  background: transparent;
+  width: 100%;
+  border: none;
+}
+
+.rwp-iframe.hidden {
+  visibility: hidden;
+}

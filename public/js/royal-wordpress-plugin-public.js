@@ -29,4 +29,21 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$( window ).load(function() {
+		var $iframes = $('.rwp-iframe');
+		$iframes.each(function(){
+			var $iframe = $(this);
+			var $html = $iframe.contents().find('html');
+			var htmlHeight = $html.outerHeight(true);
+			var htmlScrollHeight = $html.prop('scrollHeight');
+			var $body = $iframe.contents().find('body');
+			var bodyHeight = $body.outerHeight(true);
+			var bodyScrollHeight = $body.prop('scrollHeight');
+			var height = Math.max(htmlHeight, htmlScrollHeight, bodyHeight, bodyScrollHeight);
+			$iframe.height(height);
+			$iframe.removeClass('hidden');
+		});
+	});
+	
+
 })( jQuery );
