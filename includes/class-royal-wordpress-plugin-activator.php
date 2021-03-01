@@ -30,7 +30,9 @@ class Royal_Wordpress_Plugin_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+		require_once __DIR__ . '/class-royal-wordpress-plugin-database.php';
+		$rwp_database = new Royal_Wordpress_Plugin_Database();
+		$rwp_database->create_db_table();
 	}
 
 }
