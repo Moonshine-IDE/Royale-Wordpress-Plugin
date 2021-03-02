@@ -23,6 +23,8 @@ span.shortcode {
 span.shortcode input {
   background: transparent;
   border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   box-shadow: none;
   font-size: 12px;
   margin: 0;
@@ -31,6 +33,12 @@ span.shortcode input {
   width: 99%;
 }
 
-#rwp-upload-zip-form .form-field input {
+#rwp-upload-zip-form .form-field input,
+#rwp-upload-zip-form .form-field textarea {
   width: 25em;
 }
+
+#rwp-upload-zip-form .form-field textarea {
+  resize: none;
+}
+

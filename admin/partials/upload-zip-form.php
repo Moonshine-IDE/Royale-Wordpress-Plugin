@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <label for="shortcode-description"><?= __( 'Shortcode description', 'royal-wordpress-plugin' ) ?> </label>
           </th>
           <td>
-            <input name="shortcode-description" type="text" id="shortcode-description" value="" maxlength="255">
+            <textarea name="shortcode-description" id="shortcode-description" value="" maxlength="255" rows="5"></textarea>
           </td>
 	      </tr>
         <tr class="form-field form-required">
