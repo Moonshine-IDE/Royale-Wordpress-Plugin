@@ -30,3 +30,7 @@ span.shortcode input {
   padding: 4px 8px;
   width: 99%;
 }
+
+#rwp-upload-zip-form .form-field input {
+  width: 25em;
+}

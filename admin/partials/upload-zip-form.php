@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap" id="rwp-upload-zip-form" class="rwp-upload-zip-form">
-  <h1 class="wp-heading-inline">Upload a new shortcode</h1>
+  <h1 class="wp-heading-inline"><?= __( 'Upload a new shortcode', 'royal-wordpress-plugin' ) ?></h1>
   <?php if ( $notices ) : ?>
     <ul>
       <?php foreach( $notices as $notice ) : ?>
@@ -36,17 +36,36 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php
     wp_nonce_field( 'zip_upload_nonce', 'zip_upload_nonce' );
     ?>
-    <div class="wrap wrap--input">
-      <label for="shortcode-name">Shortcode name</label>
-      <input type="text" name="shortcode-name" id="shortcode-name"/>
-    </div>
-    <div class="wrap wrap--input">
-      <label for="shortcode-description">Shortcode description</label>
-      <input type="text" name="shortcode-description" id="shortcode-description"/>
-    </div>
-    <div class="wrap wrap--input">
-      <input type="file" accept="application/zip" name="file"/>
-      <button class="submit button" name="upload_file" type="submit">Upload</button>
-    </div>
+    <table class="form-table" role="presentation">
+	    <tbody>
+        <tr class="form-field form-required">
+		      <th scope="row">
+            <label for="shortcode-name"><?= __( 'Shortcode name', 'royal-wordpress-plugin' ) ?> <span class="description">(<?= __( 'required', 'royal-wordpress-plugin' ) ?>)</span></label>
+          </th>
+		      <td>
+            <input name="shortcode-name" type="text" id="shortcode-name" value="" autocapitalize="none" autocorrect="off" maxlength="60" required>
+          </td>
+	      </tr>
+        <tr class="form-field">
+          <th scope="row">
+            <label for="shortcode-description"><?= __( 'Shortcode description', 'royal-wordpress-plugin' ) ?> </label>
+          </th>
+          <td>
+            <input name="shortcode-description" type="text" id="shortcode-description" value="" maxlength="255">
+          </td>
+	      </tr>
+        <tr class="form-field form-required">
+		      <th scope="row">
+            <label for="file"><?= __( 'Zip file', 'royal-wordpress-plugin' ) ?> <span class="description">(<?= __( 'required', 'royal-wordpress-plugin' ) ?>)</span></label>
+          </th>
+		      <td>
+            <input type="file" accept="application/zip" name="file" id="file" required/>
+          </td>
+	      </tr>
+		  </tbody>
+    </table>
+    <p class="submit">
+      <input type="submit" name="upload_file" id="upload_file" class="button button-primary" value="Upload">
+    </p>
   </form>
 </div>
