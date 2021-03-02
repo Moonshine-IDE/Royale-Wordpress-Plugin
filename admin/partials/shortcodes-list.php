@@ -17,7 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap" id="rwp-shortcodes-list-table">
-    <h1 class="wp-heading-inline">List of shortcodes</h1>
+    <h1 class="wp-heading-inline"><?= __( 'List of shortcodes', 'royal-wordpress-plugin' ) ?></h1>
+    <a href="<?= admin_url('admin.php?page=zip_upload_form') ?>" class="page-title-action"><?= __( 'Add New', 'royal-wordpress-plugin' ) ?></a>
     <hr class="wp-header-end">
     <form method="post">
         <?php
