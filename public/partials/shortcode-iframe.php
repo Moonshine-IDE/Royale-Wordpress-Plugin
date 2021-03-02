@@ -12,6 +12,6 @@
  */
 ?>
 
-<?php if ( !empty($rwp_plugin_shortcode_url) ) : ?>
-    <iframe class="rwp-iframe hidden" src="<?= $rwp_plugin_shortcode_url ?>"></iframe>
+<?php if ( !empty( $shortcode_url ) ) : ?>
+    <iframe class="rwp-iframe hidden" src="<?= $shortcode_url ?>"></iframe>
 <?php endif; ?>

@@ -51,7 +51,7 @@ class Royal_Wordpress_Plugin_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-		$this->add_shortcodes();
+		$this->register_shortcodes();
 
 	}
 
@@ -63,8 +63,6 @@ class Royal_Wordpress_Plugin_Public {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -86,8 +84,6 @@ class Royal_Wordpress_Plugin_Public {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -101,31 +97,51 @@ class Royal_Wordpress_Plugin_Public {
 
 	}
 
+	/**
+	 * The shortcode handler for plugin shortcode registered with WordPress.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $atts    Attributes used with the shortcode.
+	 * 
+	 * @return string
+	 */
 	public function shortcode_handler( $atts ) {
-		/**
-		 * The shortcode handler for plugin shortcode registered with WordPress.
-		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      array    $atts    Attributes used with the shortcode.
-		 */
-
-		if ( !isset( $atts['name']) ) {
+		if ( !isset( $atts['id']) ) {
 			return;
 		}
-		$rwp_plugin_shortcode_url = ROYAL_WORDPRESS_PLUGIN_URL . "shortcodes-files/{$atts['name']}/index.html";
+		$shortcode_path = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files/id-{$atts['id']}";
+		$shortcode_folder_subfolders = glob("{$shortcode_path}/*", GLOB_ONLYDIR);
+		if ( !empty( $shortcode_folder_subfolders[0] ) ) {
+			$shortcode_folder_subfolder = basename($shortcode_folder_subfolders[0]);
+		} else {
+			$shortcode_folder_subfolder = false;
+		}
+		if ( file_exists ( "{$shortcode_path}/index.html" ) ) {
+			$shortcode_url = ROYAL_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/index.html";
+		} else if ( $shortcode_folder_subfolder ) {
+			$shortcode_url = ROYAL_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/$shortcode_folder_subfolder/index.html";
+		} else {
+			$shortcode_name_attr = '';
+			if ( !empty( $atts['name'] ) ) {
+				$shortcode_name_attr = " name=\"{$atts['name']}\"";
+			}
+			return "[royal_wp_plugin id=\"{$atts['id']}\"{$shortcode_name_attr}]";
+		}
 		ob_start();
 		require __DIR__ . '/partials/shortcode-iframe.php';
 		return ob_get_clean();
 	}
 
-	private function add_shortcodes() {
-		/**
-		 * This function registers the shortcode with WordPress.
-		 *
-		 * 
-		 */
-
+	/**
+	 * This function registers the shortcode with WordPress.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * 
+	 * @return void
+	 */
+	private function register_shortcodes() {
 		$callback = array($this, 'shortcode_handler');
 		add_shortcode( 'royal_wp_plugin', $callback );
 	}
