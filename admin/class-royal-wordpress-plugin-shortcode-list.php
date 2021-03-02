@@ -89,14 +89,16 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 	 * @return string
 	 */
 	function column_date( $item ) {
-		$date_full = $item['upload_time'];
-		$date = explode ( ' ' , $date_full);
-		$date_short = $date[0];
-		ob_start();
-		?>
-		<abbr title="<?= $date_full ?>"><?= $date_short ?></abbr>
-		<?php
-		return ob_get_clean();
+		$date_time = $item['upload_time'];
+		$date_time = explode ( ' ' , $date_time);
+		$date = $date_time[0];
+		$date = date_create_from_format( 'Y-m-d' , $date );
+		$date_new_format = $date->format('Y/m/d');
+		$time = $date_time[1];
+		$time = date_create_from_format( 'H:i:s' , $time );
+		$time_new_format = $time->format('g:i a');
+		$date_time = "$date_new_format at $time_new_format";
+		return $date_time;
 	}
 
 	/**
