@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/class-royal-wordpress-plugin-admin-pages.php';
 
 /**
  * The admin-specific functionality of the plugin.
@@ -49,13 +50,8 @@ class Royal_Wordpress_Plugin_Admin {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-		add_action( 'admin_menu', array( $this, 'add_plugin_menu' ) );
-		add_action( 'admin_menu', array( $this, 'add_shortcodes_list_submenu' ) );
-		require_once __DIR__ . '/class-upload-zip-form.php';
-		new Upload_ZIP_Form();
 	}
 
 	/**
@@ -66,8 +62,6 @@ class Royal_Wordpress_Plugin_Admin {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -89,8 +83,6 @@ class Royal_Wordpress_Plugin_Admin {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
@@ -105,60 +97,14 @@ class Royal_Wordpress_Plugin_Admin {
 	}
 
 	/**
-	 * Get folders containing shortcodes' code.
+	 * Register the Admin menu and submenus pages.
 	 *
 	 * @since    1.0.0
 	 */
-	private function get_shortcode_names() {
-		$shortcodes_folder_path = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
-		$shortcodes_folder_content =glob("{$shortcodes_folder_path}/*", GLOB_ONLYDIR);
-		$shortcodes = [];
-		foreach ($shortcodes_folder_content as $shortcode_dir_path) {
-			if ( file_exists("{$shortcode_dir_path}/index.html") ) {
-				$shortcodes[] = basename($shortcode_dir_path);
-			}
-		}
-		return $shortcodes;
-	}
-
-
-	/**
-	 * Display html with list of shortcodes.
-	 *
-	 * @since    1.0.0
-	 */
-	function shortcodes_list_submenu_html() {
-		$shortcode_names = $this->get_shortcode_names();
-		require __DIR__ . '/partials/shortcodes-list.php';
-	}
-
-	/**
-	 * Add submenu to the WordPress'es wp-admin tools menu.
-	 *
-	 * @since    1.0.0
-	 */
-	function add_shortcodes_list_submenu() {
-		add_submenu_page(
-			'royal_wordpress_plugin_menu',
-			'RWP list of shortcodes',
-			'RWP list of shortcodes',
-			'edit_posts',
-			'royal_wordpress_plugin_menu',
-			array($this, 'shortcodes_list_submenu_html')
-		);
-	}
-
-	/**
-	 * Add submenu to the WordPress'es wp-admin tools menu.
-	 *
-	 * @since    1.0.0
-	 */
-	function add_plugin_menu() {
-		add_menu_page(
-			'Royal Wordpress Plugin',
-			'Royal Wordpress Plugin',
-			'edit_posts',
-			'royal_wordpress_plugin_menu',
-		);
+	public function add_admin_pages() {
+		$admin_pages = new Royal_Wordpress_Plugin_Admin_Pages();
+		$admin_pages->add_plugin_menu();
+		$admin_pages->add_shortcodes_list_submenu();
+		$admin_pages->add_shortcodes_upload_submenu();
 	}
 }

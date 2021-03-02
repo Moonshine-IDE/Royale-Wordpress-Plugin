@@ -23,9 +23,7 @@
 class Royal_Wordpress_Plugin_Activator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Code that is executed on plugin activation
 	 *
 	 * @since    1.0.0
 	 */

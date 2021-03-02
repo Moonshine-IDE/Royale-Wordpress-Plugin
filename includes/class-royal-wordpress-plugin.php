@@ -156,6 +156,7 @@ class Royal_Wordpress_Plugin {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_admin_pages' );
 
 	}
 
@@ -182,6 +183,12 @@ class Royal_Wordpress_Plugin {
 	 */
 	public function run() {
 		$this->loader->run();
+
+		// require_once __DIR__ . '/class-royal-wordpress-plugin-database.php';
+		// $rwp_database = new Royal_Wordpress_Plugin_Database();
+		// $rows = $rwp_database->get_rows();
+		// var_dump($rows);
+		// $rwp_database->delete_db_row( '6' );
 	}
 
 	/**
