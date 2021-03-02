@@ -17,12 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap" id="rwp-shortcodes-list-table">
-    <h1 class="wp-heading-inline">RWP list of shortcodes</h1>
-    <?php if ( is_array($shortcode_names) && !empty($shortcode_names) ) : ?>
-        <ul>
-            <?php foreach ($shortcode_names as $shortcode_name) : ?>
-                <li>[royal_wp_plugin name="<?= $shortcode_name ?>"]</li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
+    <h1 class="wp-heading-inline">List of shortcodes</h1>
+    <hr class="wp-header-end">
+    <form method="post">
+        <?php
+            $shortcodes_list->prepare_items();
+            $shortcodes_list->display();
+        ?>
+    </form>
 </div>
