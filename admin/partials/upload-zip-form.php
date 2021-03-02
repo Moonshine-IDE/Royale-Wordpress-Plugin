@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap" id="rwp-upload-zip-form" class="rwp-upload-zip-form">
-  <h1 class="wp-heading-inline"><?= __( 'Upload a new shortcode', 'royal-wordpress-plugin' ) ?></h1>
+  <h1 class="wp-heading-inline"><?= __( 'Upload a new script', 'royal-wordpress-plugin' ) ?></h1>
   <?php if ( $notices ) : ?>
     <ul>
       <?php foreach( $notices as $notice ) : ?>

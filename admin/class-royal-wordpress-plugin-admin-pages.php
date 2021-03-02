@@ -42,8 +42,8 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	function add_shortcodes_list_submenu() {
 		add_submenu_page(
 			'royal_wordpress_plugin_menu',
-			'List of shortcodes',
-			'List of shortcodes',
+			'List of scripts',
+			'List of scripts',
 			'edit_posts',
 			'royal_wordpress_plugin_menu',
 			array($this, 'shortcodes_list_submenu_html')
@@ -82,8 +82,8 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	public function add_shortcodes_upload_submenu() {
 		add_submenu_page(
 			'royal_wordpress_plugin_menu',
-			'Upload a new shortcode',
-			'Upload a new shortcode',
+			'Upload a new script',
+			'Upload a new script',
 			'activate_plugins',
 			'zip_upload_form',
 			array($this, 'form')
