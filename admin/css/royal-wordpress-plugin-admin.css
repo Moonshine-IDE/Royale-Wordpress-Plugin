@@ -3,24 +3,24 @@
  * included in this file.
  */
 
-.column-name {
+#rwp-shortcodes-list-table .column-name {
   width: 18%;
 }
 
-.column-shortcode {
+#rwp-shortcodes-list-table .column-shortcode {
   width: 38%;
 }
 
-.column-description {
+#rwp-shortcodes-list-table .column-description {
   width: 30%;
 }
 
-span.shortcode {
+#rwp-shortcodes-list-table span.shortcode {
  display: block;
  margin: 2px 0;
 }
 
-span.shortcode input {
+#rwp-shortcodes-list-table span.shortcode input {
   background: transparent;
   border: none;
   -webkit-box-shadow: none;
