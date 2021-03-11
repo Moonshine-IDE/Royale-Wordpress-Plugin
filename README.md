@@ -1,8 +1,8 @@
 # Royale-Wordpress-Plugin
 
 Stable tag: 1.0.0  
-Requires at least: 5.0  
-Tested up to: 5.7.2  
+Requires at least: Wordpress 5.0  
+Tested up to: Wordpress 5.7.2  
 Requires PHP: 7.0  
 License: GPL v2 or later  
 Tags: custom scripts, custom shortcodes  
