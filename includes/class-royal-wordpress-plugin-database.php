@@ -83,7 +83,7 @@ class Royal_Wordpress_Plugin_Database {
 	 *
 	 * @param string $name
 	 * @param string $description
-	 * @return int|false
+	 * @return integer|false
 	 */
 	public function insert_db_row( string $name, string $description ) {
 		$this->wpdb->insert( 
@@ -98,6 +98,28 @@ class Royal_Wordpress_Plugin_Database {
 	}
 
 	/**
+	 * Update row in the plugin's database table.
+	 *
+	 * @param string $name
+	 * @param string $description
+	 * @param integer $id
+	 * @return integer|false
+	 */
+	public function update_db_row( string $name, string $description, int $id ) {
+		$updated_row = $this->wpdb->update( 
+			$this->table_name,
+			array( 
+				'name' => $name,
+				'description' => $description,
+			),
+			array(
+				'id' => $id,
+			)
+		);
+		return $updated_row;
+	}
+
+	/**
 	 * Get a row by name from the plugin's database table.
 	 *
 	 * @param string $name
@@ -105,6 +127,17 @@ class Royal_Wordpress_Plugin_Database {
 	 */
 	public function get_row_by_name( string $name ) {
 		$row = $this->wpdb->get_row( "SELECT * FROM $this->table_name WHERE name = \"$name\"");
+		return $row;
+	}
+
+	/**
+	 * Get a row by id from the plugin's database table.
+	 *
+	 * @param integer $id
+	 * @return object|null
+	 */
+	public function get_row_by_id( int $id ) {
+		$row = $this->wpdb->get_row( "SELECT * FROM $this->table_name WHERE id = \"$id\"");
 		return $row;
 	}
 

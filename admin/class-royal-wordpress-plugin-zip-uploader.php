@@ -59,7 +59,7 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 	 *
 	 * @return bool|string|true|WP_Error
 	 */
-	public function upload( $data ) {
+	public function upload( $data, $shortcode_id = null ) {
 		/** @var $wp_filesystem \WP_Filesystem_Direct */
 		global $wp_filesystem;
     
@@ -122,7 +122,7 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 			} else {
 				$shortcode_name = $data['shortcode-name'];
 				$shortcode_description = $data['shortcode-description'];
-				$shortcode_id = $this->rwp_db->insert_db_row( $shortcode_name, $shortcode_description );
+				$shortcode_id = $shortcode_id ?? $this->rwp_db->insert_db_row( $shortcode_name, $shortcode_description );
 				if ( $shortcode_id ) {
 					$upload_path_final = $upload_path . "/id-{$shortcode_id}";
 					if ( $wp_filesystem->is_dir( $upload_path_final ) ) {

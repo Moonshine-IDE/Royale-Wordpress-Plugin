@@ -18,11 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wrap" id="rwp-shortcodes-list-table">
     <h1 class="wp-heading-inline"><?= __( 'List of all scripts', 'royal-wordpress-plugin' ) ?></h1>
-    <a href="<?= admin_url('admin.php?page=zip_upload_form') ?>" class="page-title-action"><?= __( 'Add New', 'royal-wordpress-plugin' ) ?></a>
+    <a href="<?= admin_url('admin.php?page=upload_a_new_script') ?>" class="page-title-action"><?= __( 'Add New', 'royal-wordpress-plugin' ) ?></a>
     <hr class="wp-header-end">
     <form method="post">
         <?php
-            $shortcodes_list->prepare_items();
             $shortcodes_list->display();
         ?>
     </form>
