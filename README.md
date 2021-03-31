@@ -26,7 +26,7 @@ This plugin allows you to add custom scripts in iframes in your Wordpress site. 
 
  * All of your script's files should be compressed together into a single .zip file.
  * The script's files can be wrapped into a directory before compressing into the .zip file.
- * Your custom script must have an index.html file in base directory or first nested directory. (TODO:  Is this restriction accurate, or can index.html be anywhere in the nested files).
+ * Your custom script must have an index.html file in base directory or first nested directory.
  * You can add also assets (.js, .css files, images) which would be used in the index.html file. You should link them with relative paths.
 
 ### Uploading and Managing Your Custom Scripts
