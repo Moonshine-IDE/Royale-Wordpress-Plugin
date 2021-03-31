@@ -89,8 +89,8 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	 */
 	function add_plugin_menu() {
 		add_menu_page(
-			'Royal Wordpress Plugin',
-			'Royal Wordpress Plugin',
+			'Apache Royale® Apps',
+			'Apache Royale® Apps',
 			'edit_posts',
 			'royal_wordpress_plugin_menu',
 		);
