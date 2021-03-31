@@ -183,7 +183,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		if ( $is_valid_shortcode_name ) {
 			$updated_shortcode = $this->rwp_db->update_db_row( $_POST['shortcode-name'], $_POST['shortcode-description'], $shortcode_id );
 			if ( $updated_shortcode ) {
-				$this->notices[] = __( 'You have just modified the metadata for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . "[royal_wp_plugin id=\"$shortcode_id\" name=\"{$_POST['shortcode-name']}\"]";
+				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the metadata for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . "[royal_wp_plugin id=\"$shortcode_id\" name=\"{$_POST['shortcode-name']}\"]" . '</span>';
 			}
 		}
 
@@ -193,7 +193,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			if ( is_wp_error( $result ) ) {
 				$this->errors->add( $result->get_error_code(), $result->get_error_message() );
 			} else {
-				$this->notices[] = __( 'You have just modified the script for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . $result;
+				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the script for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . $result . '</span>';
 			}
 		}
 

@@ -22,14 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     <p class="wp-heading-inline shortcode"><?= $page_subtitle ?></p>
   <?php endif; ?>
   <?php if ( $notices ) : ?>
-    <ul>
+    <ul class="notices-list">
       <?php foreach( $notices as $notice ) : ?>
         <li><?= $notice ?></li>
       <?php endforeach; ?>
     </ul>
   <?php endif; ?>
   <?php if ( $errors_messages ) : ?>
-    <ul>
+    <ul class="error-list">
       <?php foreach( $errors_messages as $message ) : ?>
         <li><?= $message; ?></li>
       <?php endforeach; ?>
@@ -37,7 +37,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php endif; ?>
   <form method="POST" action="" enctype="multipart/form-data">
     <?php
-    // wp_nonce_field( 'zip_upload_nonce', 'zip_upload_nonce' );
     wp_nonce_field( $rwp_wp_nonce_action );
     ?>
     <table class="form-table" role="presentation">
@@ -75,6 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </table>
     <p class="submit">
       <input type="submit" name="upload_file" id="upload_file" class="button button-primary" value="<?= $submit_button_text ?? __( 'Upload', 'royal-wordpress-plugin' ) ?>">
+      <a href="<?= admin_url('admin.php?page=royal_wordpress_plugin_menu') ?>" class="button button-cancel"><?= __( 'Cancel', 'royal-wordpress-plugin' ) ?></a>
     </p>
   </form>
 </div>

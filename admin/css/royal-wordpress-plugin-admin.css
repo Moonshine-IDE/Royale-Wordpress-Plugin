@@ -42,3 +42,17 @@
   resize: none;
 }
 
+#rwp-upload-zip-form p.submit .button.button-cancel {
+  margin-left: 1em;
+}
+
+#rwp-upload-zip-form .wp-heading-inline.shortcode,
+#rwp-upload-zip-form .notices-list .shortcode-modified {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#rwp-upload-zip-form .notices-list .shortcode-modified {
+  color: green;
+  font-style: italic;
+}
