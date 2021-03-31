@@ -77,7 +77,6 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			$shortcode = "[royal_wp_plugin id=\"$shortcode_id\" name=\"{$this->shortcode_name}\"]";
 			$this->page_title = __( 'Edit script', 'royal-wordpress-plugin' );
 			$this->page_subtitle = $shortcode;
-			// $this->notices[] = "You are modifying shortcode $shortcode";
 		}
 	}
 
@@ -134,7 +133,8 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		if ( is_wp_error( $result ) ) {
 			$this->errors->add( $result->get_error_code(), $result->get_error_message() );
 		} else {
-			$this->notices[] = __( 'You have just registered the following shortcode:', 'royal-wordpress-plugin' ). ' ' . $result;
+			wp_redirect( admin_url('admin.php?page=royal_wordpress_plugin_menu&orderby=date&order=desc') );
+			exit;
 		}
 	}
 
