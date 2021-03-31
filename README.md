@@ -8,36 +8,36 @@ License: GPL v2 or later
 Tags: custom scripts, custom shortcodes  
 Contributors: clearmedia  
 
-Include Royale pages in a Wordpress Website.
+Include Apache Royale® pages in a Wordpress Website.
 
 ## Description
 
-This plugin allows you to add your custom scripts to your wordpress site. It enables you to upload scripts files to the server. Then you can use these scripts as shortcodes in your posts' and pages' content.
+This plugin allows you to add custom scripts in iframes in your Wordpress site.  You can upload scripts to the server through th plugin interface.  Then you can add these scripts to your posts and pages using shortcodes.
 
-## How to install
+## How to Install
 
- * Download code from GitHub as .zip file.
+ * Download the code from GitHub as .zip file.
  * Go to your Wordpress site dashboard and upload the .zip file through the "Plugins" menu.
- * Instead of this, you can unzip the plugin into the "/wp-content/plugins/" directory.
+ * Alternatively, you can unzip the plugin into the "/wp-content/plugins/" directory.
 
-## How to use
+## How to Use
 
-### Requirements for your custom script's files
+### Requirements for Your Custom Script
 
- * Your custom script needs to consist of at least index.html file.
+ * All of your script's files should be compressed together into a single .zip file.
+ * The script's files can be wrapped into a directory before compressing into the .zip file.
+ * Your custom script must have an index.html file in base directory or first nested directory. (TODO:  Is this restriction accurate, or can index.html be anywhere in the nested files).
  * You can add also assets (.js, .css files, images) which would be used in the index.html file. You should link them with relative paths.
- * All of you script's files should be compressed together into a single .zip file.
- * The scipt's files can be wrapped into a directory before compressing into the .zip file.
 
-### Uploading and managing your custom scripts
+### Uploading and Managing Your Custom Scripts
 
- 1. Visit the *Royal Wordpress Plugin* menu in WordPress.
- 2. You can use *Upload a new spript* submenu to upload a .zip file with your custom script.
- 3. In the *List of scripts* submenu you can see all the custom scripts that you have already uploaded. You can also see shortcodes with which you can insert you scripts into your posts' and pages' content.
- 4. You can also delete the scripts in this submenu.
+ 1. Visit the *Royale Wordpress Plugin* menu in WordPress. (TODO:  is this the latest name?)
+ 2. You can use the *Upload a new script* submenu to upload a .zip file with your custom script.
+ 3. In the *List of scripts* submenu you can see all the custom scripts that you have already uploaded. You can also see shortcodes which you can insert into your posts and pages.
+ 4. You can also delete the scripts in the *List of scripts* submenu.
 
-### Using your custom scripts in your posts' and pages' content
+### Using Your Custom Scripts in Your Posts and Pages
 
- Copy the chosen shortcode from the *List of scripts* submenu.
- Insert it into the content of you post/page.
- The content of you script will be rendered on you post/page wrapped into an iframe.
+ Copy the shortcode for the desired script from the *List of scripts* submenu.
+ Insert it into the content of your post or page.
+ Your script will be rendered in your post/page, wrapped in an iframe.
