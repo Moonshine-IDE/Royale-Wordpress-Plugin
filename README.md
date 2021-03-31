@@ -31,7 +31,7 @@ This plugin allows you to add custom scripts in iframes in your Wordpress site. 
 
 ### Uploading and Managing Your Custom Scripts
 
- 1. Visit the *Royale Wordpress Plugin* menu in WordPress. (TODO:  is this the latest name?)
+ 1. Visit the *Apache Royale® Apps* menu in WordPress.
  2. You can use the *Upload a new script* submenu to upload a .zip file with your custom script.
  3. In the *List of scripts* submenu you can see all the custom scripts that you have already uploaded. You can also see shortcodes which you can insert into your posts and pages.
  4. You can also delete the scripts in the *List of scripts* submenu.
