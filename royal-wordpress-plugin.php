@@ -8,19 +8,19 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://clearmedia.pl/
+ * @link              https://moonshine-ide.com/
  * @since             1.0.0
  * @package           Royal_Wordpress_Plugin
  *
  * @wordpress-plugin
- * Plugin Name:       Royal Wordpress Plugin
- * Plugin URI:        https://github.com/prominic/Royale-Wordpress-Plugin
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin Name:       Royale Apps
+ * Plugin URI:        https://github.com/Moonshine-IDE/Royale-Wordpress-Plugin/
+ * Description:       Royale Apps plugin allows include your Apache Royale application to wordpress website.
  * Version:           1.0.0
- * Author:            Clearmedia
- * Author URI:        https://clearmedia.pl/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Author:            Moonshine IDE Team
+ * Author URI:        https://moonshine-ide.com/
+ * License:           GNU General Public License v2.0
+ * License URI:       https://github.com/Moonshine-IDE/Royale-Wordpress-Plugin/blob/main/LICENSE.txt
  * Text Domain:       royal-wordpress-plugin
  * Domain Path:       /languages
  */

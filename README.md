@@ -1,18 +1,18 @@
-# Royale-Wordpress-Plugin
+# Royale Apps
 
 Stable tag: 1.0.0  
 Requires at least: Wordpress 5.0  
 Tested up to: Wordpress 5.7.2  
 Requires PHP: 7.0  
-License: GPL v2 or later  
+License: GNU General Public License v2.0
 Tags: custom scripts, custom shortcodes  
-Contributors: clearmedia  
+Contributors: Michał Szczepanowski, Michał Hawryluk, Piotr Zarzycki, Joel Anderson  
 
 Include Apache Royale® pages in a Wordpress Website.
 
 ## Description
 
-This plugin allows you to add custom scripts in iframes in your Wordpress site.  You can upload scripts to the server through th plugin interface.  Then you can add these scripts to your posts and pages using shortcodes.
+Royale Apps plugin allows include your Apache Royale application to wordpress website.
 
 ## How to Install
 
