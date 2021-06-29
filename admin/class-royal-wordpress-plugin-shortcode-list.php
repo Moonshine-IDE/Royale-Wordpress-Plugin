@@ -144,7 +144,7 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 		$actions = [
 			'edit' => sprintf( '<a href="%1$s">%2$s</a>', $edit_url, $edit_text ),
-			'delete' => sprintf( '<a href="%1$s">%2$s</a>', $delete_url, $delete_text )
+			'delete' => sprintf( '<a href="%1$s" class="btn-rwp-delete">%2$s</a>', $delete_url, $delete_text )
 		];
 
 		$title = '<strong>' . $item['name'] . '</strong>';

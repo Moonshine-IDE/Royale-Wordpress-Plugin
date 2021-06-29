@@ -29,4 +29,20 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	 $( window ).load(function() {
+		 $('.btn-rwp-delete').click(function(e){
+			 if(!confirm('This item will be deleted, are you sure?')) {
+				 e.preventDefault();
+			 }
+		 });
+
+		 $('.bulkactions .button.action').click(function(e) {
+			if($('#bulk-action-selector-top').val() == 'bulk-delete') {
+				if(!confirm('Are you sure you want to delete selected items?')) {
+					e.preventDefault();
+				}
+			}
+		 });
+	 });
+
 })( jQuery );
