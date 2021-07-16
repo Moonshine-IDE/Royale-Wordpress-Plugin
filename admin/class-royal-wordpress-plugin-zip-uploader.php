@@ -154,7 +154,7 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 						$result = new \WP_Error( 'not-uploaded', __( 'Could not write the shortcode to the database', 'royal-wordpress-plugin' ) );
 					}
 				} else {
-					$result = new \WP_Error( 'not-valid', __( 'It isn\'t Royal script', 'royal-wordpress-plugin' ) );
+					$result = new \WP_Error( 'not-valid', __( 'The uploaded script is not recognized as an Apache Royale application.', 'royal-wordpress-plugin' ) );
 				}
 			}
 
