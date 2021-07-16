@@ -120,7 +120,6 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 				}
 				return $unzip_result;
 			} else {
-
 				$is_royal_plugin = false;
 
 				//check if it is Royal script
