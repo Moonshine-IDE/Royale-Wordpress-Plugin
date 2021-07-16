@@ -91,21 +91,21 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 		// Get upload folder path
 		$upload_path = $this->folder;
     
-    // Create upload folder if doesn't exist
+    	// Create upload folder if doesn't exist
 		if ( ! $wp_filesystem->exists( $upload_path ) ) {
 			$wp_filesystem->mkdir( $upload_path );
 		}
 
 		$working_dir = $this->folder . "-temp";
     
-    // Delete if such folder exists
+    	// Delete if such folder exists
 		if ( $wp_filesystem->is_dir( $working_dir ) ) {
 			$wp_filesystem->delete( $working_dir, true );
 		}
-    // Create the folder to hold our zip file
+    	// Create the folder to hold our zip file
 		$wp_filesystem->mkdir( $working_dir );
 		
-    // Uploading ZIP file
+    	// Uploading ZIP file
 		if( move_uploaded_file( $temp_name, $working_dir . "/" . $zip_file ) ){
 			$upload_path_temp = $upload_path . '/temp';
 			if ( $wp_filesystem->is_dir( $upload_path_temp ) ) {
@@ -120,23 +120,42 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 				}
 				return $unzip_result;
 			} else {
-				$shortcode_name = $data['shortcode-name'];
-				$shortcode_description = $data['shortcode-description'];
-				$shortcode_id = $shortcode_id ?? $this->rwp_db->insert_db_row( $shortcode_name, $shortcode_description );
-				if ( $shortcode_id ) {
-					$upload_path_final = $upload_path . "/id-{$shortcode_id}";
-					if ( $wp_filesystem->is_dir( $upload_path_final ) ) {
-						$wp_filesystem->delete( $upload_path_final, true );
+
+				$is_royal_plugin = false;
+
+				//check if it is Royal script
+				foreach(glob($upload_path_temp . '{,*/,*/*/,*/*/*/}*.js', GLOB_BRACE) as $file) {
+					if( (strpos(file_get_contents($file), 'mx.core.Application') !== false) ||
+						(strpos(file_get_contents($file), 'org.apache.royale.mdl.Application') !== false) || 
+						(strpos(file_get_contents($file), 'spark.components.Application') !== false) || 
+						(strpos(file_get_contents($file), 'org.apache.royale.core.Application') !== false) || 
+						(strpos(file_get_contents($file), 'org.apache.royale.jewel.Application') !== false)) {
+						$is_royal_plugin = true;
+						break;
 					}
-					$wp_filesystem->mkdir( $upload_path_final );
-					unzip_file( $working_dir . "/" . $zip_file, $upload_path_final );
-					$wp_filesystem->delete( $upload_path_temp, true );
-					$result = "[royal_wp_plugin id=\"$shortcode_id\" name=\"$shortcode_name\"]";
-				} else {
-					if ( $wp_filesystem->is_dir( $upload_path_temp ) ) {
+				}
+
+				if($is_royal_plugin) {
+					$shortcode_name = $data['shortcode-name'];
+					$shortcode_description = $data['shortcode-description'];
+					$shortcode_id = $shortcode_id ?? $this->rwp_db->insert_db_row( $shortcode_name, $shortcode_description );
+					if ( $shortcode_id ) {
+						$upload_path_final = $upload_path . "/id-{$shortcode_id}";
+						if ( $wp_filesystem->is_dir( $upload_path_final ) ) {
+							$wp_filesystem->delete( $upload_path_final, true );
+						}
+						$wp_filesystem->mkdir( $upload_path_final );
+						unzip_file( $working_dir . "/" . $zip_file, $upload_path_final );
 						$wp_filesystem->delete( $upload_path_temp, true );
+						$result = "[royal_wp_plugin id=\"$shortcode_id\" name=\"$shortcode_name\"]";
+					} else {
+						if ( $wp_filesystem->is_dir( $upload_path_temp ) ) {
+							$wp_filesystem->delete( $upload_path_temp, true );
+						}
+						$result = new \WP_Error( 'not-uploaded', __( 'Could not write the shortcode to the database', 'royal-wordpress-plugin' ) );
 					}
-					$result = new \WP_Error( 'not-uploaded', __( 'Could not write the shortcode to the database', 'royal-wordpress-plugin' ) );
+				} else {
+					$result = new \WP_Error( 'not-valid', __( 'It isn\'t Royal script', 'royal-wordpress-plugin' ) );
 				}
 			}
 

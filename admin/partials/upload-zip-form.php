@@ -29,11 +29,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     </ul>
   <?php endif; ?>
   <?php if ( $errors_messages ) : ?>
-    <ul class="error-list">
+    <div class="updated error is-dismissible">
       <?php foreach( $errors_messages as $message ) : ?>
-        <li><?= $message; ?></li>
+        <p><?= $message; ?></p>
       <?php endforeach; ?>
-    </ul>
+    </div>
   <?php endif; ?>
   <form method="POST" action="" enctype="multipart/form-data">
     <?php
