@@ -1,22 +1,22 @@
 <?php
 
-require_once ROYAL_WORDPRESS_PLUGIN_PATH . "includes/class-royal-wordpress-plugin-database.php";
-require_once __DIR__ . '/class-royal-wordpress-plugin-zip-uploader.php';
+require_once ROYALE_WORDPRESS_PLUGIN_PATH . "includes/class-royale-wordpress-plugin-database.php";
+require_once __DIR__ . '/class-royale-wordpress-plugin-zip-uploader.php';
 
 /**
  * Prepare data for upload-zip-form view.
  * 
  * Validate user input on server side.
- * Trigger Royal_Wordpress_Plugin_ZIP_Uploader to add shortcodes to the database and to the filesystem
+ * Trigger Royale_Wordpress_Plugin_ZIP_Uploader to add shortcodes to the database and to the filesystem
  *
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin
  */
 
-class Royal_Wordpress_Plugin_Upload_ZIP_Form {
+class Royale_Wordpress_Plugin_Upload_ZIP_Form {
 	protected $rwp_wp_nonce_field = '';
 	protected $page_title = null;
 	protected $page_subtitle = null;
@@ -31,7 +31,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 
 	public function __construct() {
 		$this->errors = new WP_Error();
-		$this->rwp_db = new Royal_Wordpress_Plugin_Database();
+		$this->rwp_db = new Royale_Wordpress_Plugin_Database();
 	}
 
 	/**
@@ -73,9 +73,9 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			$this->shortcode_name = $shortcode_in_db->name;
 			$this->shortcode_description = $shortcode_in_db->description;
 			$this->is_file_upload_required = false;
-			$this->submit_button_text = __( 'Update', 'royal-wordpress-plugin' );
-			$shortcode = "[royal_wp_plugin id=\"$shortcode_id\" name=\"{$this->shortcode_name}\"]";
-			$this->page_title = __( 'Edit script', 'royal-wordpress-plugin' );
+			$this->submit_button_text = __( 'Update', 'royale-wordpress-plugin' );
+			$shortcode = "[royale_wp_plugin id=\"$shortcode_id\" name=\"{$this->shortcode_name}\"]";
+			$this->page_title = __( 'Edit script', 'royale-wordpress-plugin' );
 			$this->page_subtitle = $shortcode;
 		}
 	}
@@ -98,8 +98,8 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		$file_data   = $_FILES ?? array();
 		$data        = array_merge( $posted_data, $file_data );
 
-		$upload_folder = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
-		$uploader = new Royal_Wordpress_Plugin_ZIP_Uploader($upload_folder);
+		$upload_folder = ROYALE_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
+		$uploader = new Royale_Wordpress_Plugin_ZIP_Uploader($upload_folder);
 
 		$is_valid_shortcode_name = false;
 		if ( !empty( $_POST['shortcode-name'] ) ) {
@@ -107,17 +107,17 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			if ( !$shortcode_in_db ) {
 				$is_valid_shortcode_name = true;
 			} else {
-				$this->notices[] = __( 'The shortcode name "', 'royal-wordpress-plugin' ) . $shortcode_in_db->name . __( '" already exist. Please choose other shortcode name', 'royal-wordpress-plugin' );
+				$this->notices[] = __( 'The shortcode name "', 'royale-wordpress-plugin' ) . $shortcode_in_db->name . __( '" already exist. Please choose other shortcode name', 'royale-wordpress-plugin' );
 			};
 		} else {
-			$this->notices[] = __( 'Shortcode name is missing.', 'royal-wordpress-plugin' );
+			$this->notices[] = __( 'Shortcode name is missing.', 'royale-wordpress-plugin' );
 		}
 
 		$is_file_attached = false;
 		if ( !empty( $_FILES['file']['tmp_name'] ) ) {
 			$is_file_attached = true;
 		} else {
-			$this->notices[] = __( 'File is missing.', 'royal-wordpress-plugin' );
+			$this->notices[] = __( 'File is missing.', 'royale-wordpress-plugin' );
 		}
 
 		if ( !$is_valid_shortcode_name ) {
@@ -133,7 +133,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		if ( is_wp_error( $result ) ) {
 			$this->errors->add( $result->get_error_code(), $result->get_error_message() );
 		} else {
-			wp_redirect( admin_url('admin.php?page=royal_wordpress_plugin_menu&orderby=date&order=desc') );
+			wp_redirect( admin_url('admin.php?page=royale_wordpress_plugin_menu&orderby=date&order=desc') );
 			exit;
 		}
 	}
@@ -158,8 +158,8 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		$file_data   = $_FILES ?? array();
 		$data        = array_merge( $posted_data, $file_data );
 
-		$upload_folder = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
-		$uploader = new Royal_Wordpress_Plugin_ZIP_Uploader($upload_folder);
+		$upload_folder = ROYALE_WORDPRESS_PLUGIN_PATH . "shortcodes-files";
+		$uploader = new Royale_Wordpress_Plugin_ZIP_Uploader($upload_folder);
 
 		$is_valid_shortcode_name = false;
 		if ( !empty( $_POST['shortcode-name'] ) ) {
@@ -169,10 +169,10 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			} else if ( $shortcode_id === (int) $shortcode_in_db->id ) {
 				$is_valid_shortcode_name = true;
 			} else {
-				$this->notices[] = __( 'The shortcode name "', 'royal-wordpress-plugin' ) . $shortcode_in_db->name . __( '" already exist. Please choose other shortcode name', 'royal-wordpress-plugin' );
+				$this->notices[] = __( 'The shortcode name "', 'royale-wordpress-plugin' ) . $shortcode_in_db->name . __( '" already exist. Please choose other shortcode name', 'royale-wordpress-plugin' );
 			};
 		} else {
-			$this->notices[] = __( 'Shortcode name is missing.', 'royal-wordpress-plugin' );
+			$this->notices[] = __( 'Shortcode name is missing.', 'royale-wordpress-plugin' );
 		}
 
 		$is_file_attached = false;
@@ -183,7 +183,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 		if ( $is_valid_shortcode_name ) {
 			$updated_shortcode = $this->rwp_db->update_db_row( $_POST['shortcode-name'], $_POST['shortcode-description'], $shortcode_id );
 			if ( $updated_shortcode ) {
-				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the metadata for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . "[royal_wp_plugin id=\"$shortcode_id\" name=\"{$_POST['shortcode-name']}\"]" . '</span>';
+				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the metadata for the following shortcode:', 'royale-wordpress-plugin' ). ' ' . "[royale_wp_plugin id=\"$shortcode_id\" name=\"{$_POST['shortcode-name']}\"]" . '</span>';
 			}
 		}
 
@@ -193,7 +193,7 @@ class Royal_Wordpress_Plugin_Upload_ZIP_Form {
 			if ( is_wp_error( $result ) ) {
 				$this->errors->add( $result->get_error_code(), $result->get_error_message() );
 			} else {
-				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the script for the following shortcode:', 'royal-wordpress-plugin' ). ' ' . $result . '</span>';
+				$this->notices[] = '<span class="shortcode-modified">' . __( 'You have just modified the script for the following shortcode:', 'royale-wordpress-plugin' ). ' ' . $result . '</span>';
 			}
 		}
 

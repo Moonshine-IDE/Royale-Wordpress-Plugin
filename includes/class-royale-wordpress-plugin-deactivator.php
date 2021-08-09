@@ -6,8 +6,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_Deactivator {
+class Royale_Wordpress_Plugin_Deactivator {
 
 	/**
 	 * Short Description. (use period)

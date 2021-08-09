@@ -9,8 +9,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin {
+class Royale_Wordpress_Plugin {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Royal_Wordpress_Plugin {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Royal_Wordpress_Plugin_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Royale_Wordpress_Plugin_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,12 +67,12 @@ class Royal_Wordpress_Plugin {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'ROYAL_WORDPRESS_PLUGIN_VERSION' ) ) {
-			$this->version = ROYAL_WORDPRESS_PLUGIN_VERSION;
+		if ( defined( 'ROYALE_WORDPRESS_PLUGIN_VERSION' ) ) {
+			$this->version = ROYALE_WORDPRESS_PLUGIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'royal-wordpress-plugin';
+		$this->plugin_name = 'royale-wordpress-plugin';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -86,10 +86,10 @@ class Royal_Wordpress_Plugin {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Royal_Wordpress_Plugin_Loader. Orchestrates the hooks of the plugin.
-	 * - Royal_Wordpress_Plugin_i18n. Defines internationalization functionality.
-	 * - Royal_Wordpress_Plugin_Admin. Defines all hooks for the admin area.
-	 * - Royal_Wordpress_Plugin_Public. Defines all hooks for the public side of the site.
+	 * - Royale_Wordpress_Plugin_Loader. Orchestrates the hooks of the plugin.
+	 * - Royale_Wordpress_Plugin_i18n. Defines internationalization functionality.
+	 * - Royale_Wordpress_Plugin_Admin. Defines all hooks for the admin area.
+	 * - Royale_Wordpress_Plugin_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -103,33 +103,33 @@ class Royal_Wordpress_Plugin {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-royal-wordpress-plugin-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-royale-wordpress-plugin-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-royal-wordpress-plugin-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-royale-wordpress-plugin-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-royal-wordpress-plugin-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-royale-wordpress-plugin-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-royal-wordpress-plugin-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-royale-wordpress-plugin-public.php';
 
-		$this->loader = new Royal_Wordpress_Plugin_Loader();
+		$this->loader = new Royale_Wordpress_Plugin_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Royal_Wordpress_Plugin_i18n class in order to set the domain and to register the hook
+	 * Uses the Royale_Wordpress_Plugin_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -137,7 +137,7 @@ class Royal_Wordpress_Plugin {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Royal_Wordpress_Plugin_i18n();
+		$plugin_i18n = new Royale_Wordpress_Plugin_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -152,7 +152,7 @@ class Royal_Wordpress_Plugin {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Royal_Wordpress_Plugin_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Royale_Wordpress_Plugin_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -169,7 +169,7 @@ class Royal_Wordpress_Plugin {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Royal_Wordpress_Plugin_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Royale_Wordpress_Plugin_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -184,8 +184,8 @@ class Royal_Wordpress_Plugin {
 	public function run() {
 		$this->loader->run();
 
-		// require_once __DIR__ . '/class-royal-wordpress-plugin-database.php';
-		// $rwp_database = new Royal_Wordpress_Plugin_Database();
+		// require_once __DIR__ . '/class-royale-wordpress-plugin-database.php';
+		// $rwp_database = new Royale_Wordpress_Plugin_Database();
 		// $rows = $rwp_database->get_rows();
 		// var_dump($rows);
 		// $rwp_database->delete_db_row( '6' );
@@ -206,7 +206,7 @@ class Royal_Wordpress_Plugin {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Royal_Wordpress_Plugin_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Royale_Wordpress_Plugin_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

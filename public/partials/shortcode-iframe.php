@@ -7,8 +7,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/public/partials
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/public/partials
  */
 ?>
 

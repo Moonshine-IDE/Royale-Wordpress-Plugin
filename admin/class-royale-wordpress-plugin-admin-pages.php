@@ -1,7 +1,7 @@
 <?php
-require_once ROYAL_WORDPRESS_PLUGIN_PATH . "includes/class-royal-wordpress-plugin-database.php";
-require_once __DIR__ . '/class-royal-wordpress-plugin-shortcode-list.php';
-require_once __DIR__ . '/class-royal-wordpress-plugin-upload-zip-form.php';
+require_once ROYALE_WORDPRESS_PLUGIN_PATH . "includes/class-royale-wordpress-plugin-database.php";
+require_once __DIR__ . '/class-royale-wordpress-plugin-shortcode-list.php';
+require_once __DIR__ . '/class-royale-wordpress-plugin-upload-zip-form.php';
 
 /**
  * Defines the admin pages of the plugin.
@@ -9,8 +9,8 @@ require_once __DIR__ . '/class-royal-wordpress-plugin-upload-zip-form.php';
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin
  */
 
 /**
@@ -18,12 +18,12 @@ require_once __DIR__ . '/class-royal-wordpress-plugin-upload-zip-form.php';
  *
  * Defines the menu and submenu pages for shortcodes' upload and shortcodes' list
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin
  * @author     Clearmedia <contact@clearmedia.pl>
  */
 
-class Royal_Wordpress_Plugin_Admin_Pages {
+class Royale_Wordpress_Plugin_Admin_Pages {
 	protected $shortcodes_list;
 
 	protected $upload_zip_form;
@@ -44,11 +44,11 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	 */
 	function add_shortcodes_list_submenu() {
 		$hook_name = add_submenu_page(
-			'royal_wordpress_plugin_menu',
+			'royale_wordpress_plugin_menu',
 			'List of scripts',
 			'List of scripts',
 			'edit_posts',
-			'royal_wordpress_plugin_menu',
+			'royale_wordpress_plugin_menu',
 			array($this, 'shortcodes_list_submenu_html')
 		);
 
@@ -62,7 +62,7 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	 */
 	function shortcodes_list_submenu_load() {
 		$this->screen_option();
-		$this->shortcodes_list = new Royal_Wordpress_Plugin_Shortcode_List();
+		$this->shortcodes_list = new Royale_Wordpress_Plugin_Shortcode_List();
 		$this->shortcodes_list->prepare_items();
 	}
 
@@ -92,7 +92,7 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 			'Apache Royale® Apps',
 			'Apache Royale® Apps',
 			'edit_posts',
-			'royal_wordpress_plugin_menu',
+			'royale_wordpress_plugin_menu',
 		);
 	}
 
@@ -112,7 +112,7 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	 */
 	public function add_shortcodes_upload_submenu() {
 		$hook_name = add_submenu_page(
-			'royal_wordpress_plugin_menu',
+			'royale_wordpress_plugin_menu',
 			'Upload a new script',
 			'Upload a new script',
 			'activate_plugins',
@@ -129,7 +129,7 @@ class Royal_Wordpress_Plugin_Admin_Pages {
 	 * @since    1.0.0
 	 */
 	function shortcodes_upload_submenu_load() {
-		$this->upload_zip_form = new Royal_Wordpress_Plugin_Upload_ZIP_Form();
+		$this->upload_zip_form = new Royale_Wordpress_Plugin_Upload_ZIP_Form();
 		$this->upload_zip_form->load();
 	}
 }

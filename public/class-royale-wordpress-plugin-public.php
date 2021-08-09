@@ -6,8 +6,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/public
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/public
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/public
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_Public {
+class Royale_Wordpress_Plugin_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -64,15 +64,15 @@ class Royal_Wordpress_Plugin_Public {
 
 		/**
 		 * An instance of this class should be passed to the run() function
-		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
+		 * defined in Royale_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Royal_Wordpress_Plugin_Loader will then create the relationship
+		 * The Royale_Wordpress_Plugin_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/royal-wordpress-plugin-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/royale-wordpress-plugin-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -85,15 +85,15 @@ class Royal_Wordpress_Plugin_Public {
 
 		/**
 		 * An instance of this class should be passed to the run() function
-		 * defined in Royal_Wordpress_Plugin_Loader as all of the hooks are defined
+		 * defined in Royale_Wordpress_Plugin_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Royal_Wordpress_Plugin_Loader will then create the relationship
+		 * The Royale_Wordpress_Plugin_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/royal-wordpress-plugin-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/royale-wordpress-plugin-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -110,7 +110,7 @@ class Royal_Wordpress_Plugin_Public {
 		if ( !isset( $atts['id']) ) {
 			return;
 		}
-		$shortcode_path = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files/id-{$atts['id']}";
+		$shortcode_path = ROYALE_WORDPRESS_PLUGIN_PATH . "shortcodes-files/id-{$atts['id']}";
 		$shortcode_folder_subfolders = glob("{$shortcode_path}/*", GLOB_ONLYDIR);
 		if ( !empty( $shortcode_folder_subfolders[0] ) ) {
 			$shortcode_folder_subfolder = basename($shortcode_folder_subfolders[0]);
@@ -118,15 +118,15 @@ class Royal_Wordpress_Plugin_Public {
 			$shortcode_folder_subfolder = false;
 		}
 		if ( file_exists ( "{$shortcode_path}/index.html" ) ) {
-			$shortcode_url = ROYAL_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/index.html";
+			$shortcode_url = ROYALE_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/index.html";
 		} else if ( $shortcode_folder_subfolder ) {
-			$shortcode_url = ROYAL_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/$shortcode_folder_subfolder/index.html";
+			$shortcode_url = ROYALE_WORDPRESS_PLUGIN_URL . "shortcodes-files/id-{$atts['id']}/$shortcode_folder_subfolder/index.html";
 		} else {
 			$shortcode_name_attr = '';
 			if ( !empty( $atts['name'] ) ) {
 				$shortcode_name_attr = " name=\"{$atts['name']}\"";
 			}
-			return "[royal_wp_plugin id=\"{$atts['id']}\"{$shortcode_name_attr}]";
+			return "[royale_wp_plugin id=\"{$atts['id']}\"{$shortcode_name_attr}]";
 		}
 		ob_start();
 		require __DIR__ . '/partials/shortcode-iframe.php';
@@ -143,6 +143,6 @@ class Royal_Wordpress_Plugin_Public {
 	 */
 	private function register_shortcodes() {
 		$callback = array($this, 'shortcode_handler');
-		add_shortcode( 'royal_wp_plugin', $callback );
+		add_shortcode( 'royale_wp_plugin', $callback );
 	}
 }

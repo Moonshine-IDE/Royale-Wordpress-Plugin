@@ -1,6 +1,6 @@
 <?php
 
-require_once ROYAL_WORDPRESS_PLUGIN_PATH . "includes/class-royal-wordpress-plugin-database.php";
+require_once ROYALE_WORDPRESS_PLUGIN_PATH . "includes/class-royale-wordpress-plugin-database.php";
 
 /**
  * Add shortcodes to database and filesystem.
@@ -12,18 +12,18 @@ require_once ROYAL_WORDPRESS_PLUGIN_PATH . "includes/class-royal-wordpress-plugi
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin
  */
 
-class Royal_Wordpress_Plugin_ZIP_Uploader {
+class Royale_Wordpress_Plugin_ZIP_Uploader {
 
 	protected $folder = '';
 	protected $rwp_db;
 
 	public function __construct($folder) {
 		$this->folder = $folder;
-		$this->rwp_db = new Royal_Wordpress_Plugin_Database();
+		$this->rwp_db = new Royale_Wordpress_Plugin_Database();
 	}
 
 	/**
@@ -120,21 +120,21 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 				}
 				return $unzip_result;
 			} else {
-				$is_royal_plugin = false;
+				$is_royale_plugin = false;
 
-				//check if it is Royal script
+				//check if it is Royale script
 				foreach(glob($upload_path_temp . '{,*/,*/*/,*/*/*/}*.js', GLOB_BRACE) as $file) {
 					if( (strpos(file_get_contents($file), 'mx.core.Application') !== false) ||
 						(strpos(file_get_contents($file), 'org.apache.royale.mdl.Application') !== false) || 
 						(strpos(file_get_contents($file), 'spark.components.Application') !== false) || 
 						(strpos(file_get_contents($file), 'org.apache.royale.core.Application') !== false) || 
 						(strpos(file_get_contents($file), 'org.apache.royale.jewel.Application') !== false)) {
-						$is_royal_plugin = true;
+						$is_royale_plugin = true;
 						break;
 					}
 				}
 
-				if($is_royal_plugin) {
+				if($is_royale_plugin) {
 					$shortcode_name = $data['shortcode-name'];
 					$shortcode_description = $data['shortcode-description'];
 					$shortcode_id = $shortcode_id ?? $this->rwp_db->insert_db_row( $shortcode_name, $shortcode_description );
@@ -146,15 +146,15 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 						$wp_filesystem->mkdir( $upload_path_final );
 						unzip_file( $working_dir . "/" . $zip_file, $upload_path_final );
 						$wp_filesystem->delete( $upload_path_temp, true );
-						$result = "[royal_wp_plugin id=\"$shortcode_id\" name=\"$shortcode_name\"]";
+						$result = "[royale_wp_plugin id=\"$shortcode_id\" name=\"$shortcode_name\"]";
 					} else {
 						if ( $wp_filesystem->is_dir( $upload_path_temp ) ) {
 							$wp_filesystem->delete( $upload_path_temp, true );
 						}
-						$result = new \WP_Error( 'not-uploaded', __( 'Could not write the shortcode to the database', 'royal-wordpress-plugin' ) );
+						$result = new \WP_Error( 'not-uploaded', __( 'Could not write the shortcode to the database', 'royale-wordpress-plugin' ) );
 					}
 				} else {
-					$result = new \WP_Error( 'not-valid', __( 'The uploaded script is not recognized as an Apache Royale application.', 'royal-wordpress-plugin' ) );
+					$result = new \WP_Error( 'not-valid', __( 'The uploaded script is not recognized as an Apache Royale application.', 'royale-wordpress-plugin' ) );
 				}
 			}
 
@@ -166,7 +166,7 @@ class Royal_Wordpress_Plugin_ZIP_Uploader {
 
 			return  $result;
 		} else {
-			return new \WP_Error( 'not-uploaded', __( 'Could not upload file', 'royal-wordpress-plugin' ) );
+			return new \WP_Error( 'not-uploaded', __( 'Could not upload file', 'royale-wordpress-plugin' ) );
 		}
 	}
 }

@@ -4,11 +4,11 @@
  * Create and interact with the plugin's database table with the shortcode's information.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_Database {
+class Royale_Wordpress_Plugin_Database {
 
 	/**
 	 * Wordpress database instance.
@@ -22,7 +22,7 @@ class Royal_Wordpress_Plugin_Database {
 	 *
 	 * @since    1.0.0
 	 */
-	private $short_table_name = "royal_wordpress_plugin_shortcodes";
+	private $short_table_name = "royale_wordpress_plugin_shortcodes";
 
 	/**
 	 * Plugin's table name with the Wordpress'es prefix.

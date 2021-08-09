@@ -9,8 +9,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_i18n {
+class Royale_Wordpress_Plugin_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Royal_Wordpress_Plugin_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'royal-wordpress-plugin',
+			'royale-wordpress-plugin',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

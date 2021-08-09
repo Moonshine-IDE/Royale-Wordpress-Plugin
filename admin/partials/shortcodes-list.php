@@ -7,8 +7,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin/partials
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin/partials
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="wrap" id="rwp-shortcodes-list-table">
-    <h1 class="wp-heading-inline"><?= __( 'List of all scripts', 'royal-wordpress-plugin' ) ?></h1>
-    <a href="<?= admin_url('admin.php?page=upload_a_new_script') ?>" class="page-title-action"><?= __( 'Add New', 'royal-wordpress-plugin' ) ?></a>
+    <h1 class="wp-heading-inline"><?= __( 'List of all scripts', 'royale-wordpress-plugin' ) ?></h1>
+    <a href="<?= admin_url('admin.php?page=upload_a_new_script') ?>" class="page-title-action"><?= __( 'Add New', 'royale-wordpress-plugin' ) ?></a>
     <hr class="wp-header-end">
     <form method="post">
         <?php

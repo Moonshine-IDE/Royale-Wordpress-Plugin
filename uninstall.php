@@ -22,7 +22,7 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
+ * @package    Royale_Wordpress_Plugin
  */
 
 // If uninstall not called from WordPress, then exit.

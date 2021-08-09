@@ -6,8 +6,8 @@
  * @link       https://clearmedia.pl/
  * @since      1.0.0
  *
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/includes
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/includes
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_Activator {
+class Royale_Wordpress_Plugin_Activator {
 
 	/**
 	 * Code that is executed on plugin activation
@@ -28,8 +28,8 @@ class Royal_Wordpress_Plugin_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-		require_once __DIR__ . '/class-royal-wordpress-plugin-database.php';
-		$rwp_database = new Royal_Wordpress_Plugin_Database();
+		require_once __DIR__ . '/class-royale-wordpress-plugin-database.php';
+		$rwp_database = new Royale_Wordpress_Plugin_Database();
 		$rwp_database->create_db_table();
 	}
 

@@ -35,48 +35,48 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ROYAL_WORDPRESS_PLUGIN_VERSION', '1.0.0' );
+define( 'ROYALE_WORDPRESS_PLUGIN_VERSION', '1.0.0' );
 
 /**
  * Plugin directory url
  */
-if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_URL' ) ) {
-    define( 'ROYAL_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( !defined( 'ROYALE_WORDPRESS_PLUGIN_URL' ) ) {
+    define( 'ROYALE_WORDPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
 /**
  * Plugin directory path
  */
-if ( !defined( 'ROYAL_WORDPRESS_PLUGIN_PATH' ) ) {
-    define( 'ROYAL_WORDPRESS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+if ( !defined( 'ROYALE_WORDPRESS_PLUGIN_PATH' ) ) {
+    define( 'ROYALE_WORDPRESS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 }
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-royal-wordpress-plugin-activator.php
+ * This action is documented in includes/class-royale-wordpress-plugin-activator.php
  */
-function activate_royal_wordpress_plugin() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-royal-wordpress-plugin-activator.php';
-	Royal_Wordpress_Plugin_Activator::activate();
+function activate_royale_wordpress_plugin() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-royale-wordpress-plugin-activator.php';
+	Royale_Wordpress_Plugin_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-royal-wordpress-plugin-deactivator.php
+ * This action is documented in includes/class-royale-wordpress-plugin-deactivator.php
  */
-function deactivate_royal_wordpress_plugin() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-royal-wordpress-plugin-deactivator.php';
-	Royal_Wordpress_Plugin_Deactivator::deactivate();
+function deactivate_royale_wordpress_plugin() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-royale-wordpress-plugin-deactivator.php';
+	Royale_Wordpress_Plugin_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_royal_wordpress_plugin' );
-register_deactivation_hook( __FILE__, 'deactivate_royal_wordpress_plugin' );
+register_activation_hook( __FILE__, 'activate_royale_wordpress_plugin' );
+register_deactivation_hook( __FILE__, 'deactivate_royale_wordpress_plugin' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-royal-wordpress-plugin.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-royale-wordpress-plugin.php';
 
 /**
  * Begins execution of the plugin.
@@ -87,10 +87,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-royal-wordpress-plugin.php
  *
  * @since    1.0.0
  */
-function run_royal_wordpress_plugin() {
+function run_royale_wordpress_plugin() {
 
-	$plugin = new Royal_Wordpress_Plugin();
+	$plugin = new Royale_Wordpress_Plugin();
 	$plugin->run();
 
 }
-run_royal_wordpress_plugin();
+run_royale_wordpress_plugin();

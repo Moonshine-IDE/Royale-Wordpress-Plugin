@@ -3,18 +3,18 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-require_once ROYAL_WORDPRESS_PLUGIN_PATH . "includes/class-royal-wordpress-plugin-database.php";
+require_once ROYALE_WORDPRESS_PLUGIN_PATH . "includes/class-royale-wordpress-plugin-database.php";
 
 /**
 
  * This class defines data model for shorcodes-list view.
  *
  * @since      1.0.0
- * @package    Royal_Wordpress_Plugin
- * @subpackage Royal_Wordpress_Plugin/admin
+ * @package    Royale_Wordpress_Plugin
+ * @subpackage Royale_Wordpress_Plugin/admin
  * @author     Clearmedia <contact@clearmedia.pl>
  */
-class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
+class Royale_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 	/**
 	 * Short Description. (use period)
@@ -38,13 +38,13 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 	public function __construct() {
 		parent::__construct( [
-			'singular' => __( 'Shortcode', 'royal-wordpress-plugin' ),
-			'plural'   => __( 'Shortcodes', 'royal-wordpress-plugin' ),
+			'singular' => __( 'Shortcode', 'royale-wordpress-plugin' ),
+			'plural'   => __( 'Shortcodes', 'royale-wordpress-plugin' ),
 			'ajax'     => false
 		] );
 
-		$this->rwp_db = new Royal_Wordpress_Plugin_Database();
-		$this->shortcodes_path = ROYAL_WORDPRESS_PLUGIN_PATH . "shortcodes-files/";
+		$this->rwp_db = new Royale_Wordpress_Plugin_Database();
+		$this->shortcodes_path = ROYALE_WORDPRESS_PLUGIN_PATH . "shortcodes-files/";
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 	/** Text displayed when no customer data is available */
 	public function no_items() {
-		_e( 'No shortcodes avaliable.', 'royal-wordpress-plugin' );
+		_e( 'No shortcodes avaliable.', 'royale-wordpress-plugin' );
 	}
 
 	/**
@@ -130,7 +130,7 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 		// $edit_url = esc_url( wp_nonce_url( add_query_arg( $edit_query_args, 'admin.php' ), 'rwp_edit_shortcode_' . $item['id'] ) );
 		$edit_url = esc_url( add_query_arg( $edit_query_args, 'admin.php' ) );
-		$edit_text = _x( 'Edit', 'List table row action', 'royal-wordpress-plugin' );
+		$edit_text = _x( 'Edit', 'List table row action', 'royale-wordpress-plugin' );
 
 		$delete_query_args = array(
 			'page'   => $page,
@@ -140,7 +140,7 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 
 		// $delete_url = esc_url( wp_nonce_url( add_query_arg( $delete_query_args, 'admin.php' ), 'rwp_delete_shortcode_' . $item['id'] ) );
 		$delete_url = esc_url( wp_nonce_url( add_query_arg( $delete_query_args ), 'rwp_delete_shortcode_' . $item['id'] ) );
-		$delete_text = _x( 'Delete', 'List table row action', 'royal-wordpress-plugin' );
+		$delete_text = _x( 'Delete', 'List table row action', 'royale-wordpress-plugin' );
 
 		$actions = [
 			'edit' => sprintf( '<a href="%1$s">%2$s</a>', $edit_url, $edit_text ),
@@ -161,7 +161,7 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 	function column_shortcode( $item ) {
 		ob_start();
 		?>
-		[royal_wp_plugin id="<?= $item['id'] ?>" name="<?= $item['name'] ?>"]
+		[royale_wp_plugin id="<?= $item['id'] ?>" name="<?= $item['name'] ?>"]
 		<?php
 		$shortcode = ob_get_clean();
 		$shortcode = trim ( $shortcode );
@@ -183,10 +183,10 @@ class Royal_Wordpress_Plugin_Shortcode_List extends WP_List_Table {
 	function get_columns() {
 		$columns = [
 			'cb' => '<input type="checkbox" />',
-			'name' => __( 'Name', 'royal-wordpress-plugin' ),
-			'shortcode' => __( 'Shortcode', 'royal-wordpress-plugin' ),
-			'description' => __( 'Description', 'royal-wordpress-plugin' ),
-			'date' => __( 'Date', 'royal-wordpress-plugin' ),
+			'name' => __( 'Name', 'royale-wordpress-plugin' ),
+			'shortcode' => __( 'Shortcode', 'royale-wordpress-plugin' ),
+			'description' => __( 'Description', 'royale-wordpress-plugin' ),
+			'date' => __( 'Date', 'royale-wordpress-plugin' ),
 		];
 		return $columns;
 	}
