@@ -10,7 +10,7 @@
  *
  * @link              https://moonshine-ide.com/
  * @since             1.0.0
- * @package           Royal_Wordpress_Plugin
+ * @package           Royale_Wordpress_Plugin
  *
  * @wordpress-plugin
  * Plugin Name:       Royale Apps
@@ -21,7 +21,7 @@
  * Author URI:        https://moonshine-ide.com/
  * License:           GNU General Public License v2.0
  * License URI:       https://github.com/Moonshine-IDE/Royale-Wordpress-Plugin/blob/main/LICENSE.txt
- * Text Domain:       royal-wordpress-plugin
+ * Text Domain:       royale-wordpress-plugin
  * Domain Path:       /languages
  */
 
